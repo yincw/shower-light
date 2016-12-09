@@ -1,0 +1,23 @@
+@import (reference) "./variables.less";
+
+.progress {
+    display: none;
+
+    position: absolute;
+    bottom: 0;
+    left: -20px;
+    z-index: 1;
+    clip: rect(10px, 1044px, 20px, 20px);
+
+    width: 0;
+    height: 0;
+
+    box-sizing: content-box;
+    border: 10px solid @progressColor;
+    border-right-color: transparent;
+    transition: width .2s linear;
+
+    &[style*='100%'] {
+        padding-left: 10px;
+    }
+}

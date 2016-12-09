@@ -1,0 +1,23 @@
+@import (reference) "./variables.less";
+
+body {
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    line-height: 1;
+}
+
+.shower {
+    counter-reset: slide;
+    text-size-adjust: none;
+    -webkit-print-color-adjust: exact;
+
+    color: @foregroundColor;
+
+    @media print {
+        text-rendering: geometricPrecision;
+    }
+}
+
+@page {
+    size: @pageWidth @pageHeight;
+    margin: 0;
+}

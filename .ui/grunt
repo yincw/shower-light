@@ -1,0 +1,77 @@
+{
+    "global": {
+        "inputDir": "src",
+        "outputDir": "resources",
+        "buildDir": ".build",
+        "spriteDir": ".sprite"
+    },
+    "sprite": {
+        "inputDir": "images",
+        "outputDir": "images",
+        "imgPath": "../images",
+        "algorithm": "binary-tree",
+        "algorithmSort": true,
+        "padding": 1,
+        "retina": {
+            "inputDir": "retina"
+        }
+    },
+    "less": {
+        "inputDir": "less",
+        "outputDir": "_css",
+        "cosyless": "../../cosyless/cosyless.less",
+        "spriteVarSi": "../../../.sprite/sprite-var-si.less",
+        "spriteVarS": "../../../.sprite/sprite-var-s.less",
+        "spriteVar2x": "../../../.sprite/sprite-var-2x.less",
+        "browsers": [
+            "> 1%",
+            "last 2 versions"
+        ],
+        "keepBreaks": false,
+        "compatibility": "ie7"
+    },
+    "font": {
+        "inputDir": "fonts",
+        "outputDir": "fonts"
+    },
+    "coffee": {
+        "inputDir": "coffee",
+        "outputDir": "__cs",
+        "bare": true
+    },
+    "concat": {
+        "js": {
+            "inputDir": "js",
+            "outputDir": "__js"
+        },
+        "css": {
+            "outputDir": "css"
+        }
+    },
+    "uglify": {
+        "outputDir": "js",
+        "beautify": false
+    },
+    "debug": {
+        "host": "localhost",
+        "port": 3000,
+        "proxy": "http://localhost:62616/ui/",
+        "open": true,
+        "files": [
+            "resources/**/*",
+            "modules/**/*",
+            "*.html"
+        ]
+    },
+    "copy": {
+        "outputDir": "_js",
+        "copyToDir": "copy_to"
+    },
+    "compress": {
+        "inputDir": [
+            "resources/**",
+            "modules/**",
+            "htmls/**"
+        ]
+    }
+}

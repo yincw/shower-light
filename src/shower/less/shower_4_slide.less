@@ -1,0 +1,484 @@
+@import (reference) "./variables.less";
+
+.slide {
+    position: relative;
+    z-index: 1;
+
+    overflow: hidden;
+    width: @pageWidth;
+    height: @pageHeight;
+    padding: @pagePaddingRight @pagePaddingRight @pagePaddingRight @pagePaddingLeft;
+
+    font-size: 22px;
+    line-height: 1.8;
+    background-color: @backgroundColor;
+
+    &::after {
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+
+        counter-increment: slide;
+        content: counter(slide);
+
+        color: @pageNumber;
+    }
+
+    h2,
+    p,
+    table,
+    ol,
+    ul {
+        margin-bottom: 1em;
+    }
+
+    h2 {
+        font-size: 44px;
+        color: @slideTitleColor;
+    }
+    p {
+        &.note {
+            color: @pageNumber;
+        }
+    }
+
+    a {
+        color: @primaryColor;
+        background: linear-gradient(to top, currentColor .09em, transparent .09em) repeat-x;
+    }
+
+    sup,
+    sub {
+        position: relative;
+        line-height: 0;
+        font-size: 75%;
+    }
+    sup {
+        top: -.5em
+    }
+    sub {
+        bottom: -.25em
+    }
+
+    strong,
+    b {
+        font-weight: 700;
+    }
+
+    dfn,
+    em,
+    i {
+        font-style: italic;
+    }
+
+    img {}
+    iframe {}
+
+    svg {}
+    video {}
+    figure {}
+    figcaption {}
+
+    blockquote {
+        &::before {
+            position: absolute;
+            content: '\201C';
+            line-height: 1;
+            font-size: 8em;
+            margin: -.15em 0 0 -.43em;
+        }
+
+        & + figcaption {
+            font-style: italic;
+            font-weight: 700;
+            margin: -1em 0 1em;
+        }
+    }
+    cite {}
+
+    // 表格
+    table {
+        width: e('calc(100% + 130px + 100px)');
+        margin-left: @pagePaddingLeft * -1;
+
+        th,
+        td {
+            &:first-child {
+                padding-left: @pagePaddingLeft;
+            }
+
+            &:last-child {
+                padding-right: @pagePaddingRight;
+            }
+        }
+
+        th {
+            text-align: left;
+            font-weight: 700;
+        }
+
+        tr {
+            &:not(:last-of-type) {
+                & > * {
+                    background: linear-gradient(to top, rgba(88, 90, 94, .5) .055em, transparent .055em) repeat-x
+                }
+            }
+        }
+
+        &.striped {
+            tr {
+                &:nth-child(even) {
+                    background: rgba(88, 90, 94, .1)
+                }
+
+                & > * {
+                    background-image: none;
+                }
+            }
+        }
+    }
+    thead {}
+    tbody {}
+    tr {}
+    th {}
+    td {}
+
+    // 列表
+    ol,
+    ul {
+        counter-reset: list;
+
+        li {
+            page-break-inside: avoid;
+            text-indent: -2em;
+
+            &::before {
+                display: inline-block;
+                width: 2em;
+
+                text-align: right;
+                color: @pageNumber;
+            }
+        }
+
+        ol,
+        ul {
+            margin-bottom: 0;
+            margin-left: 2em;
+        }
+    }
+    ol {
+        & > li {
+            &::before {
+                counter-increment: list;
+                content: counter(list) ".";
+                padding-right: .4em;
+            }
+        }
+    }
+    ul {
+        & > li {
+            &::before {
+                content: '•';
+                padding-right: .5em;
+            }
+        }
+    }
+    li {}
+
+    pre,
+    code {}
+    pre {}
+    code {}
+
+    footer {
+        display: none;
+
+        position: absolute;
+        bottom: @pageHeight * -1;
+        left: 0;
+        right: 0;
+
+        padding: 41px 100px 8px;
+        background: #fbfbba;
+        box-shadow: 0 1px 0 #fafaa2 inset;
+        transition: bottom .3s;
+
+        mark {
+            background: rgba(255, 255, 255, .8)
+        }
+    }
+
+    // 背景栅格显示
+    // &.grid {
+    //     background-image: url(../images/grid.png);
+    //     -ms-interpolation-mode: nearest-neighbor;
+    //     image-rendering: pixelated;
+    //
+    //     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution:2dppx) {
+    //         background-image: url(../images/grid@2x.png);
+    //         background-size: @pageWidth auto;
+    //     }
+    // }
+
+    &.code {
+        pre {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        code {
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            left: @pagePaddingLeft;
+            right: 100px;
+        }
+    }
+
+    // 背景色
+    &.black,
+    &.white {
+        &::after {
+            visibility: hidden;
+        }
+    }
+    &.black {
+        background-color: #000;
+
+        .pattern-theme {
+            color: @patternThemeWhiteColor;
+            background-color: @patternThemeBlackBackgroundColor;
+        }
+        .pattern-author {
+            color: @patternAuthorWhiteColor;
+        }
+    }
+    &.white {
+        background-color: #fff;
+
+        .pattern-theme {
+            color: @patternThemeBlackColor;
+            background-color: @patternThemeWhiteBackgroundColor;
+        }
+        .pattern-author {
+            color: @patternAuthorBlackColor;
+        }
+    }
+
+    // 封面
+    .cover {
+        z-index: -1;
+        max-width: 100%;
+        max-height: 100%;
+
+        &.w,
+        &.width {
+            width: 100%;
+            max-height: none
+        }
+
+        &.h,
+        &.height {
+            height: 100%;
+            max-width: none
+        }
+
+        & + figcaption {
+            position: absolute;
+            bottom: 20px;
+            right: 10px;
+            opacity: .7;
+            font-size: 12px;
+            transform-origin: 0 100%;
+            transform: translateX(100%) rotate(-90deg);
+
+
+            &.white {
+                color: #fff;
+            }
+
+            a {
+                color: currentcolor
+            }
+        }
+    }
+
+    // 呐喊
+    .shout {
+        position: absolute;
+        top: 50%;
+        left: 0;
+
+        width: 100%;
+        text-align: center;
+        line-height: 1;
+
+        font-size: 88px;
+        transform: translateY(-50%);
+
+        a {
+            background: linear-gradient(to top, currentColor .11em, transparent .11em) repeat-x;
+        }
+
+        // 扩张效果
+        &.grow {}
+        // 收缩效果
+        &.shrink {}
+    }
+
+    .next {
+        &.active {}
+    }
+
+    // 显示列数
+    .double,
+    .triple {
+        column-gap: 75px;
+        hyphens: auto;
+    }
+    .double {
+        column-count: 2; // 两列显示
+    }
+    .triple {
+        column-count: 3; // 三列显示
+    }
+
+    .middle {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        left: @pagePaddingLeft;
+        right: @pagePaddingRight;
+
+        .line-numbers {
+            margin-left: @pagePaddingLeft * -1;
+            margin-right: @pagePaddingRight * -1;
+        }
+    }
+
+    .pattern {
+
+        // 主题
+        &-theme {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+
+            margin: 0;
+            transform: translate(0,-50%);
+            padding: 20px;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        &-author {
+            position: absolute;
+            right: 30px;
+            bottom: 30px;
+            text-align: right;
+            margin: 0;
+            font-size: 18px;
+
+            li {
+                &::before {
+                    content: '';
+                }
+            }
+        }
+
+        &-part,
+        &-number {
+            font-size: 66px;
+            margin: 0;
+        }
+
+        // 部分
+        &-part {
+            color: @primaryColor;
+        }
+
+        // 序号
+        &-number {
+            color: @number;
+        }
+    }
+
+    .cover,
+    .place {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .place {
+
+        &.b.l,
+        &.b.r,
+        &.bottom.left,
+        &.bottom.right,
+        &.t.l,
+        &.t.r,
+        &.top.left,
+        &.top.right {
+            transform: none;
+        }
+
+        &.b,
+        &.bottom,
+        &.t,
+        &.top {
+            transform: translate(-50%, 0);
+        }
+
+        &.l,
+        &.left,
+        &.r,
+        &.right {
+            transform: translate(0, -50%);
+        }
+
+        &.t,
+        &.t.l,
+        &.t.r,
+        &.top,
+        &.top.left,
+        &.top.right {
+            top: 0;
+        }
+
+        &.r,
+        &.right {
+            right: 0;
+            left: auto;
+        }
+
+        &.b,
+        &.b.l,
+        &.b.r,
+        &.bottom,
+        &.bottom.left,
+        &.bottom.right {
+            top: auto;
+            bottom: 0;
+        }
+
+        &.l,
+        &.left {
+            left: 0;
+        }
+
+    }
+
+    &:hover {
+        & > footer {
+            bottom: 0;
+        }
+    }
+    &.visited {}
+    &.active {}
+}

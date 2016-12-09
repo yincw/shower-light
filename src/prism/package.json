@@ -1,0 +1,16 @@
+{
+    "name": "prism",
+    "description": "Lightweight, robust, elegant syntax highlighting.",
+    "version": "1.6.0",
+    "icon": "code",
+    "compatibility": {
+        "Chrome": "latest-1",
+        "Firefox": "latest-1",
+        "Explorer": "latest-1"
+    },
+    "developer": {
+        "css": "yincw",
+        "js": "none"
+    },
+    "notes": ""
+}

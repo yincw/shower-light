@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <base href="#" target="_blank">
+        <link rel="stylesheet" href="./resources/css/shower-light.css">
+        <title><%= theme %>_<%= time %>_<%= author %></title>
+    </head>
+    <body class="shower list">
+
+        <header class="caption">
+            <h1><%= theme %></h1>
+            <p><%= author %></p>
+        </header>
+
+        <%- yield %>
+
+        <div class="progress"></div>
+
+        <script src="./resources/js/shower.js"></script>
+        <script src="./resources/js/prism.js"></script>
+    </body>
+</html>

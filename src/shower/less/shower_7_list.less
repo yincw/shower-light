@@ -1,0 +1,57 @@
+@import (reference) "./variables.less";
+
+.shower {
+    &.list {
+
+        @media screen {
+            position: absolute;
+            clip: rect(0, auto, auto, 0);
+
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+
+            padding-top: 25px;
+            background-color: @listBackgroundColor;
+
+            .caption {
+                display: block;
+            }
+
+            .slide {
+                transform-origin: 0 0;
+                transform: scale(.25);
+                margin: 0 -(@pageHeight) -551px 25px;
+
+                border-radius: 2px;
+                box-shadow: 0 20px 50px @listSlideShadowColor;
+
+                &:hover {
+                    box-shadow: 0 0 0 20px @listSlideShadowHoverColor, 0 20px 50px @listSlideShadowColor;
+                }
+                &:target {
+                    box-shadow: 0 0 0 20px @listSlideShadowTargetColor, 0 20px 50px @listSlideShadowColor;
+                }
+
+                & * {
+                    pointer-events: none
+                }
+
+                footer {
+                    display: block;
+                }
+            }
+
+            @media (min-width: @breakpoint) {
+                padding-top: 50px;
+
+                .slide {
+                    transform: scale(.5);
+                    margin: 0 -(@pageWidth/2) -334px 50px;
+                }
+            }
+
+        }
+
+    }
+}

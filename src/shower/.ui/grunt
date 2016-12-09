@@ -1,0 +1,54 @@
+{
+    "global": {
+        "inputDir": ".",
+        "outputDir": "../../modules",
+        "buildDir": ".build",
+        "spriteDir": ".sprite"
+    },
+    "sprite": {
+        "inputDir": "images",
+        "outputDir": "_images",
+        "imgPath": "../images",
+        "algorithm": "binary-tree",
+        "algorithmSort": true,
+        "padding": 1
+    },
+    "less": {
+        "inputDir": "less",
+        "outputDir": "_css",
+        "cosyless": "../../cosyless/cosyless.less",
+        "spriteVarSi": "../.sprite/sprite-var-si.less",
+        "spriteVarS": "../.sprite/sprite-var-s.less",
+        "browsers": [
+            "> 1%",
+            "last 2 versions"
+        ],
+        "keepBreaks": false,
+        "compatibility": "ie7"
+    },
+    "font": {
+        "inputDir": "fonts",
+        "outputDir": "fonts"
+    },
+    "coffee": {
+        "inputDir": "coffee",
+        "outputDir": "__cs",
+        "bare": true
+    },
+    "cmdize": {
+        "inputDir": "js",
+        "outputDir": "__cmdize_js"
+    },
+    "transport": {
+        "outputDir": "__transport_js"
+    },
+    "concat": {
+        "outputDir": "_js",
+        "include": "relative",
+        "separator": ";"
+    },
+    "uglify": {
+        "outputDir": "js",
+        "beautify": false
+    }
+}

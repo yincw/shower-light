@@ -1,0 +1,16 @@
+{
+    "name": "shower",
+    "description": "Shower HTML presentation engine",
+    "version": "2.1.4",
+    "icon": "slideshow",
+    "compatibility": {
+        "Chrome": "latest-1",
+        "Firefox": "latest-1",
+        "Explorer": "latest-1"
+    },
+    "developer": {
+        "css": "yincw",
+        "js": "none"
+    },
+    "notes": ""
+}
